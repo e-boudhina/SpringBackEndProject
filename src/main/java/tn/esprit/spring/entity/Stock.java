@@ -26,8 +26,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.ColumnDefault;
@@ -35,7 +34,6 @@ import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.istack.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -69,7 +67,6 @@ public class Stock implements Serializable {
 	
 	@NotNull
 	//@Size(min = 1, max = 9999)
-	
 	@Min(1)
 	@Max(9999)
 	//@Pattern(regexp ="^[1-9][0-9]*$")
@@ -81,6 +78,7 @@ public class Stock implements Serializable {
 	//The below lines will be executed one at the time. However, the one above is much simpler (@Size)
 	@Min(1) // return "qteMin": "must be greater than or equal to 1"
 	@Max(9999) // return   "qteMin": "must be less than or equal to 9999"
+	
 	private Integer qteMin;
 	
 
@@ -99,7 +97,7 @@ public class Stock implements Serializable {
 	@Temporal(TemporalType.DATE)
     private Date dateDerniereModification;
 	
-	////@JsonIgnore
+	//@JsonIgnore
 	@OneToMany(mappedBy="stockproduit")
 	private Set<Produit> stockproduittt;
 	

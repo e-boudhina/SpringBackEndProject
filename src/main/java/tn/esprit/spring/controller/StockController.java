@@ -71,7 +71,7 @@ public class StockController {
 		if(stockService.updateStock(stock)!=null){
 			return new ResponseEntity(stockService.updateStock(stock) ,HttpStatus.ACCEPTED);
 		}
-		return new ResponseEntity("There is no stock to update like "+stock.getIdStock() +" in database",HttpStatus.NOT_FOUND);
+		return new ResponseEntity("There is no stock to update under the id "+stock.getIdStock() +" in database",HttpStatus.NOT_FOUND);
 
 	}
 	

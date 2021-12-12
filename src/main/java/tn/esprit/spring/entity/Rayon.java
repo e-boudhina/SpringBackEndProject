@@ -30,11 +30,9 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity
 @Getter
@@ -49,18 +47,18 @@ public class Rayon implements Serializable  {
 	@Column(name="idRayon")
 	private Long idRayon; 
 	
-	@NotNull
+	
 	@NotBlank(message="This field must not be empty")
-	@Size(min = 3, max = 10)
+	@Size(min = 3, max = 30)
 	private String code;
 	
-	@NotBlank
-	@NotNull(message="This field must not be empty")
+	
+	@NotBlank(message="This field must not be empty")
 	@Size(min = 3, max = 30)
 	private String libelle;
 	
 	
-	//@JsonIgnore
+	//1@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="rayonproduit",fetch = FetchType.LAZY)
 	private Set<Produit> rayonproduittt;
 	
